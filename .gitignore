@@ -1,0 +1,90 @@
+# ==============================
+# Python
+# ==============================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ==============================
+# uv
+# ==============================
+
+# uv cache
+.uv/
+
+# ==============================
+# Environment variables / secrets
+# ==============================
+
+.env
+.env.*
+!.env.example
+
+# ==============================
+# Testing / Coverage
+# ==============================
+
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ==============================
+# Type checking / linting
+# ==============================
+
+.mypy_cache/
+.pyright/
+.ruff_cache/
+
+# ==============================
+# IDEs / Editors
+# ==============================
+
+.vscode/
+.idea/
+*.iml
+
+# ==============================
+# OS
+# ==============================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# ==============================
+# Logs
+# ==============================
+
+*.log
+
+# ==============================
+# Local databases
+# ==============================
+
+*.db
+*.sqlite
+*.sqlite3
