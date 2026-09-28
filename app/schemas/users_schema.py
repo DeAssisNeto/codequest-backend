@@ -9,7 +9,6 @@ class UserBase(BaseModel):
     birth_date: datetime.date
     gender: str
     email: EmailStr
-    role: UserRole = UserRole.STUDENT
 
 
 class UserCreate(UserBase):
@@ -18,6 +17,16 @@ class UserCreate(UserBase):
 
 class UserResponse(UserBase):
     id: uuid.UUID
+    role: UserRole
     active: bool
 
     model_config = {"from_attributes": True}
+
+
+class UserUpdate(BaseModel):
+    name: str | None = None
+    birth_date: datetime.date | None = None
+    gender: str | None = None
+    email: EmailStr | None = None
+    password: str | None = None
+    active: bool | None = None
