@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.database.session import get_db
 from app.repositories.exercise_repository import ExerciseRepository
 from app.services.exercise_service import ExerciseService
-from app.schemas.exercise_schema import ExerciseCreate, ExerciseResponse
+from app.schemas.exercise_schema import ExerciseCreate, ExerciseResponse, ExerciseUpdate
 
 router = APIRouter(prefix="/exercises", tags=["exercises"])
 
@@ -41,3 +41,11 @@ async def delete(
     service: ExerciseService = Depends(get_exercise_service),
 ):
     await service.delete(exercise_id)
+
+@router.patch("/{exercise_id}", response_model=ExerciseResponse)
+async def update(
+    exercise_id: uuid.UUID,
+    exercise_data: ExerciseUpdate,
+    service: ExerciseService = Depends(get_exercise_service),
+):
+    return await service.update(exercise_id, exercise_data)
