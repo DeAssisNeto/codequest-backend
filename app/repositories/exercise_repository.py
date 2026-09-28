@@ -2,7 +2,7 @@ import uuid
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.models import Exercise
-from app.schemas.exercise_schema import ExerciseCreate
+from app.schemas.exercise_schema import ExerciseCreate, ExerciseUpdate
 
 
 class ExerciseRepository:
@@ -31,3 +31,10 @@ class ExerciseRepository:
         await self.db.commit()
 
 
+    async def update(self, exercise: Exercise, exercise_data: ExerciseUpdate) -> Exercise:
+        # exclude_unset=True: só altera os campos que o cliente realmente enviou
+        for field, value in exercise_data.model_dump(exclude_unset=True).items():
+            setattr(exercise, field, value)
+        await self.db.commit()
+        await self.db.refresh(exercise)
+        return exercise
