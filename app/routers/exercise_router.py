@@ -33,3 +33,11 @@ async def create(
     service: ExerciseService = Depends(get_exercise_service),
 ):
     return await service.create(exercise_data)
+
+
+@router.delete("/{exercise_id}", status_code=204)
+async def delete(
+    exercise_id: uuid.UUID,
+    service: ExerciseService = Depends(get_exercise_service),
+):
+    await service.delete(exercise_id)
