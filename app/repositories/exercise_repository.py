@@ -25,3 +25,9 @@ class ExerciseRepository:
         await self.db.commit()
         await self.db.refresh(exercise)
         return exercise
+
+    async def delete(self, exercicio: Exercise) -> None:
+        exercicio.active = False
+        await self.db.commit()
+
+
