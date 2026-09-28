@@ -12,6 +12,17 @@ class ExerciseBase(BaseModel):
     difficulty: str
 
 
+class ExerciseUpdate(BaseModel):
+    title: str | None = None
+    statement: str | None = None
+    technology: str | None = None
+    initial_code: str | None = None
+    correct_answer: str | None = None
+    category: str | None = None
+    difficulty: str | None = None
+    active: bool | None = None
+
+
 class ExerciseCreate(ExerciseBase):
     pass
 
