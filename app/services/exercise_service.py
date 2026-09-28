@@ -1,7 +1,7 @@
 import uuid
 from fastapi import HTTPException, status
 from app.repositories.exercise_repository import ExerciseRepository
-from app.schemas.exercise_schema import ExerciseCreate
+from app.schemas.exercise_schema import ExerciseCreate, ExerciseUpdate
 from app.models.models import Exercise
 
 
@@ -27,3 +27,7 @@ class ExerciseService:
     async def delete(self, exercise_id: uuid.UUID) -> None:
         exercise = await self.find_by_id(exercise_id)
         await self.repository.delete(exercise)
+
+    async def update(self, exercise_id: uuid.UUID, exercise_data: ExerciseUpdate) -> Exercise:
+        exercise = await self.find_by_id(exercise_id)  # já levanta 404 se não existir
+        return await self.repository.update(exercise, exercise_data)
