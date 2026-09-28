@@ -23,3 +23,7 @@ class ExerciseService:
 
     async def create(self, exercise_data: ExerciseCreate) -> Exercise:
         return await self.repository.create(exercise_data)
+
+    async def delete(self, exercise_id: uuid.UUID) -> None:
+        exercise = await self.find_by_id(exercise_id)
+        await self.repository.delete(exercise)
